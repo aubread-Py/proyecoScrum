@@ -4,8 +4,6 @@
 
 The project should follow this structure:
 
-text
-
 ```text
 UNO/
 │
@@ -53,7 +51,6 @@ Special cards:
 We can represent these using Java enums.
 
 ```java
-
 public class Card {
 
     public enum Color {
@@ -94,8 +91,6 @@ public class Card {
 
 To create a red number 5 card:
 
-java
-
 ```java
 Card card = new Card(
     Card.Color.RED,
@@ -104,8 +99,6 @@ Card card = new Card(
 ```
 
 To create a Wild card:
-
-java
 
 ```java
 Card wild = new Card(
