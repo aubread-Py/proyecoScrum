@@ -14,8 +14,8 @@ public class Card {
 		return color;
 	}
 
-	public Object getValue() {
-		return value;
+	public String getValue() {
+		return value.name();
 	}
 
 }
