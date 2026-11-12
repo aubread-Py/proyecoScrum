@@ -2,10 +2,10 @@ package card;
 
 public class Card {
 	
-	private Color color;
+	private String color;
 	private Value value;
 
-	public Card(Color color, Value value) {
+	public Card(String color, Value value) {
 		this.color = color;
 		this.value = value;
 	}
