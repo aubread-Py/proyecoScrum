@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
+import card.Card;
+
 public class Actions {
 
     private static Random random = new Random();
