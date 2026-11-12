@@ -1,15 +1,21 @@
 package card;
 
 public class Card {
+	
+	private Color color;
+	private Value value;
 
+	public Card(Color color, Value value) {
+		this.color = color;
+		this.value = value;
+	}
+	
 	public Object getColor() {
-		// TODO Auto-generated method stub
-		return null;
+		return color;
 	}
 
 	public Object getValue() {
-		// TODO Auto-generated method stub
-		return null;
+		return value;
 	}
 
 }
