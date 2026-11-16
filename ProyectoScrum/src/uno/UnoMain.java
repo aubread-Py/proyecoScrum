@@ -1,4 +1,5 @@
 package uno;
+
 import java.util.Scanner;
 
 public class UnoMain {
@@ -7,9 +8,9 @@ public class UnoMain {
 		String accion;
 		System.out.println("Enter one of the next actions: draw or play");
 		do {
-		accion = ask.next();
+			accion = ask.next();
 			switch (accion) {
-			case "draw": {	
+			case "draw": {
 				break;
 			}
 			case "play": {
@@ -23,5 +24,5 @@ public class UnoMain {
 		} while (accion.equals("null"));
 		ask.close();
 	}
-	
+
 }
