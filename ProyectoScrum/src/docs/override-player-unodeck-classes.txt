@@ -1,0 +1,142 @@
+/* 2026-11-16 */
+
+# === CHANGES === #
+# ............... #
+
+In $PROJECT/card the class Class.java has been changed.
+In $PROJECT, the classes directory was created, and two classes appreared:
+Player and UnoDeck.
+
+# === DOCUMENTATION === #
+# ..................... #
+
+1) What is @Override in Java?
+
+@Override is an annotation used in Java to indicate that a method is overriding
+a method inherited from a parent class or implementing a method declared in an
+interface.
+
+In our Card.java class, we use it before the toString() method:
+
+@Override
+public String toString() {
+    return "[" + color + " - " + value + "]";
+}
+
+The toString() method already exists in Java's Object class, which is the parent
+class of all Java classes. By overriding it, we customize how a Card object is
+represented when printed. For example, without overriding toString(), printing a
+Card object would produce something similar to:
+
+Card@1a2b3c
+
+With our implementation, it produces:
+
+[RED - 5]
+
+The main advantages of @Override are:
+
+- It makes the programmer's intention clear.
+- It helps the compiler detect errors, such as incorrect method names or parameters.
+- It makes the code easier to understand and maintain.
+
+2) Explanation of the Player and UnoDeck classes
+
+A) Player class
+
+The Player class represents an individual participant in the UNO game. Its main
+responsibility is to manage the cards belonging to a specific player.
+
+It contains two attributes:
+
+- name: A String that stores the player's name.
+- hand: A List<Card> that stores all the cards currently held by the player.
+
+The hand is initialized using an ArrayList:
+
+this.hand = new ArrayList<>();
+
+This allows each player to have a dynamically sized collection of cards. Cards
+can be added or removed as the game progresses.
+
+The main methods are:
+
+- Player(String name): Constructor that initializes a player with a name and an
+  empty hand.
+
+- getName(): Returns the player's name.
+
+- getHand(): Returns the list of cards currently held by the player.
+
+- addCard(Card card): Adds a new card to the player's hand. This method is used
+  when the player receives a card from the deck.
+
+- removeCard(int index): Removes and returns a card from the player's hand using
+  its position in the list. It checks whether the index is valid before removing
+  the card.
+
+- showHand(): Displays all the cards currently held by the player.
+
+B) UnoDeck class
+
+The UnoDeck class represents the UNO deck and manages the available cards during
+the game. Its main responsibility is to create the complete deck, shuffle it and
+distribute cards to players.
+
+It contains one main attribute:
+
+- cards: A List<Card> that stores all the cards remaining in the deck.
+
+The list is initialized using an ArrayList:
+
+cards = new ArrayList<>();
+
+This allows cards to be dynamically added and removed.
+
+The main methods are:
+
+- UnoDeck(): Constructor that initializes the deck, creates all the cards and
+  shuffles them.
+
+- createDeck(): Generates the 108 cards of a standard UNO deck. It creates
+  numerical cards, action cards and wild cards.
+
+- shuffleDeck(): Uses Collections.shuffle(cards) to randomize the order of the
+  cards.
+
+- drawCard(): Removes and returns the first card from the deck. If the deck is
+  empty, it returns null.
+
+- dealCards(List<Player> players, int numberOfCards): Distributes a specified
+  number of cards to every player in the provided list. It uses drawCard() to
+  obtain cards and addCard() to assign them to each player's hand,
+
+- getRemainingCards(): Returns the number of cards remaining in the deck.
+
+- getCards(): Returns the list containing the remaining cards in the deck.
+
+
+3) How Player and UnoDeck work together
+
+Both classes collaborate to manage the distribution of cards.
+
+The process works as follows:
+
+1. An UnoDeck object is created.
+2. The constructor generates the 108 cards.
+3. The deck is shuffled randomly.
+4. A collection of Player objects is created.
+5. dealCards() distributes the initial cards.
+6. For each player, drawCard() removes a card from the deck.
+7. addCard() assigns that card to the player's hand.
+
+For example, when a player draws a card:
+
+Card drawnCard = deck.drawCard();
+
+if (drawnCard != null) {
+    player.addCard(drawnCard);
+}
+
+The first instruction obtains a card from the deck. The second instruction
+assigns that card to the player's hand, provided that the deck was not empty.
