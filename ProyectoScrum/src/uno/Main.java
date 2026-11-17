@@ -2,6 +2,8 @@ package uno;
 
 import java.util.Scanner;
 
+import menus.Menu;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -11,10 +13,18 @@ public class Main {
 			String option = Menu.principal(s);
 
 			switch (option) {
+			
 			case "play": 
 				Integer playerNumber = Menu.getPlayerCount(s);
 				break;
-				
+			
+			case "history":
+				break;
+
+			case "exit":
+				System.out.println("quiting...");
+				break;
+
 			default:
 				throw new IllegalArgumentException("Unexpected value: " + option);
 			}
