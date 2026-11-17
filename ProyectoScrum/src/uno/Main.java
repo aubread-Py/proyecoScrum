@@ -1,11 +1,9 @@
-package main;
+package uno;
 
 import java.util.List;
 import java.util.Scanner;
 
 import classes.Player;
-import uno.Menus;
-import uno.Uno;
 
 public class Main {
 
