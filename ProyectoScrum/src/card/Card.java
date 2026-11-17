@@ -10,7 +10,7 @@ public class Card {
 		this.value = value;
 	}
 	
-	public Object getColor() {
+	public String getColor() {
 		return color;
 	}
 
