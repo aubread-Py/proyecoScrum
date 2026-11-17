@@ -39,7 +39,11 @@ public class Menu {
 		do {
 			
 			System.out.print("\nnumber of players (2/3): ");
-			input = s.nextInt();
+			try {
+				input = Integer.parseInt(s.nextLine());
+			} catch (NumberFormatException ignored) {
+				input = -1;
+			}
 			
 			valid = input == 2 || input == 3;
 				
