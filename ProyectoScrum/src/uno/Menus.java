@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 import classes.Player;
 
-public class Menu {
+public class Menus {
 	
 	public static String principal(Scanner s) {
 		
@@ -61,7 +61,7 @@ public class Menu {
 
 		while (i <= playerNumber) {
 			
-			System.out.print("player " + i + ": ");
+			System.out.print("player " + i + " name: ");
 			String name = s.nextLine();
 
 			if (name.isBlank()) {
