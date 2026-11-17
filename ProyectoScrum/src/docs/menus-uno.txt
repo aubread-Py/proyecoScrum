@@ -1,0 +1,40 @@
+/* 2026-11-17 */
+
+# === CHANGES === #
+# ............... #
+
+Main.java and Menu.java was changed.
+Card.java atributes were changed to match Actions, Player and UnoDeck classes.
+
+# === DOCUMENTATION === #
+# ..................... #
+
+1) Main.java and Menu.java
+Now Main is in its own package.
+The Main creates the Scanner and shows the main menu UI.
+It has the following options:
+
+- play: initializes the parameters for the Uno game and creates a new game.
+- history: shows the records from previous games.
+- exit: terminates the program.
+
+When play is selected, the Uno.java file is called. 
+
+2) Uno.java
+This is the class where the game logic exists, contains the next atributes:
+
+- players: An ArrayList of a determined number of Player classes.
+- deck: Is the main deck comming from the UnoDeck class.
+- discardPile: An ArrayList of Cards, where the drawn and cards are placed. 
+- s: The Scanner class from java.util.
+
+The constructor uses the parameters players and a Scanner wich is was created 
+previously in the Main.
+It also deals the cards for all the players.
+
+
+Methods:
+
+- startGame(): Loops over the ArrayList of players so each can take turns.
+Looping over the list is the easiest way to manage the turns in the game,
+so if the reverse card is played, the list can be inverted.
