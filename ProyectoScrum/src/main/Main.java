@@ -1,8 +1,11 @@
 package main;
 
+import java.util.List;
 import java.util.Scanner;
 
-import menus.Menu;
+import classes.Player;
+import uno.Menus;
+import uno.Uno;
 
 public class Main {
 
@@ -10,12 +13,14 @@ public class Main {
 
 		try (Scanner s = new Scanner(System.in)) {
 			
-			String option = Menu.principal(s);
+			String option = Menus.principal(s);
 
 			switch (option) {
 			
 			case "play": 
-				Integer playerNumber = Menu.getPlayerCount(s);
+				Integer playerNumber = Menus.getPlayerCount(s);
+				List<Player> players = Menus.createPlayers(playerNumber, s);
+				new Uno(players, s);
 				break;
 			
 			case "history":
