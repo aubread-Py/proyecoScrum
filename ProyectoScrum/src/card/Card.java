@@ -3,11 +3,11 @@ package card;
 public class Card {
 	
 	private String color;
-	private Value value;
+	private String value;
 
 	public Card(String color, String value) {
 		this.color = color;
-		this.value = Value.valueOf(value);
+		this.value = value;
 	}
 	
 	public Object getColor() {
@@ -15,7 +15,7 @@ public class Card {
 	}
 
 	public String getValue() {
-		return value.name();
+		return value;
 	}
 
     @Override
