@@ -5,9 +5,9 @@ public class Card {
 	private String color;
 	private Value value;
 
-	public Card(String color, Value value) {
+	public Card(String color, String value) {
 		this.color = color;
-		this.value = value;
+		this.value = Value.valueOf(value);
 	}
 	
 	public Object getColor() {

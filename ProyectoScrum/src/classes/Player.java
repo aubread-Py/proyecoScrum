@@ -1,5 +1,9 @@
+package classes;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import card.Card;
 
 public class Player {
 
