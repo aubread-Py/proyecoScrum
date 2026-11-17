@@ -1,6 +1,6 @@
 package uno;
 
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import classes.Player;
@@ -17,7 +17,7 @@ public class Main {
 			
 			case "play": 
 				Integer playerNumber = Menus.getPlayerCount(s);
-				List<Player> players = Menus.createPlayers(playerNumber, s);
+				ArrayList<Player> players = Menus.createPlayers(playerNumber, s);
 				new Uno(players, s);
 				break;
 			
