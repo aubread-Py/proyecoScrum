@@ -1,8 +1,10 @@
-package menus;
+package uno;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import classes.Player;
 
 public class Menu {
 	
@@ -50,5 +52,26 @@ public class Menu {
 		} while (!valid);
 		
 		return input;
+	}
+
+	public static List<Player> createPlayers(int playerNumber, Scanner s) {
+		
+		List<Player> players = new ArrayList<>();
+		int i = 1;
+
+		while (i <= playerNumber) {
+			
+			System.out.print("player " + i + ": ");
+			String name = s.nextLine();
+
+			if (name.isBlank()) {
+				System.out.println("player name can not be blank");
+			} else {
+				players.add(new Player(name));
+				i++;	
+			}
+		}
+
+		return players;
 	}
 }
