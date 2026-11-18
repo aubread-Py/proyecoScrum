@@ -67,6 +67,17 @@ public class Menus {
 		return handleMenu(options, s);
 	}
 
+	public static String getColor(Scanner s) {
+
+		final List<String> options = new ArrayList<>();
+		options.add("RED");
+		options.add("BLUE");
+		options.add("GREEN");
+		options.add("YELLOW");
+
+		return handleMenu(options, s);
+	}
+
 	// print a menu from a list and get a valid input
 	private static String handleMenu(List<String> options, Scanner s) {
 
@@ -79,4 +90,5 @@ public class Menus {
 
 		return input;
 	}
+
 }
