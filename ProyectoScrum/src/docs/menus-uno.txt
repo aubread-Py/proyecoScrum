@@ -1,10 +1,11 @@
-/* 2026-11-17 */
+/* 2026-11-18 */
 
 # === CHANGES === #
 # ............... #
 
 Main.java and Menu.java was changed.
 Card.java atributes were changed to match Actions, Player and UnoDeck classes.
+Uno.java gameplay was added
 
 # === DOCUMENTATION === #
 # ..................... #
@@ -38,3 +39,20 @@ Methods:
 - startGame(): Loops over the ArrayList of players so each can take turns.
 Looping over the list is the easiest way to manage the turns in the game,
 so if the reverse card is played, the list can be inverted.
+The game ends when a player have 1 card left.
+
+- reversePlayerTurn(): Swaps the other 2 players to simulate the revert card.
+
+- playerDrawN(): The parameter player draws N cards from the deck.
+
+- nextPlayer(): Is the player in the next turn.
+
+- actByValue(): By a card value, takes action depending on the vaule it self.
+
+"SKIP": Shifts the ArrayList of players. In 2 player mode the same player acting
+twice is intentional.
+"REVERSE": Calls reversePlayerTurn().
+"DRAW_TWO": Calls playerDrawN().
+"WILD": Changes the color of the card itself, when drawn it goes back to the
+WILD color.
+"WILD_DRAW_FOUR": Same as WILD and calls playerDrawN().

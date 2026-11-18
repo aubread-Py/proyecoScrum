@@ -42,8 +42,6 @@ public class Uno {
             // get player by turn
             Player currentPlayer = players.get(turnNumber % players.size());
 
-
-
             System.out.println("\n" + currentPlayer.getName() + "'s turn");
             currentPlayer.showHand();
 
