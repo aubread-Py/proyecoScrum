@@ -32,9 +32,9 @@ public class Card {
 			case "BLUE": color = "\033[34mBLUE\033[0m"; break;
 			case "GREEN": color = "\033[32mGREEN\033[0m"; break;
 			case "YELLOW": color = "\033[33mYELLOW\033[0m"; break;
-			default: color = "\033[31mWHITE"; break;
+			default: break;
 		}
 
-        return ansiColor + color + " - " + value + "\u001B[0m";
+        return ansiColor + this.color + " - " + value + "\033[37m";
     }
 }

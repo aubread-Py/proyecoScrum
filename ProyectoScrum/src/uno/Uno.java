@@ -86,11 +86,9 @@ public class Uno {
                         }
 
                         System.out.println("Played a card! Press enter to continue...");
-                        s.next();
-                        System.out.print("\033[H\033[2J");
-                        System.out.flush();
+                        Menus.clearWithWindowsCommand();
                         System.out.println("Press enter whenever you are ready to see your cads (next player turn) Current card on stack: " + discardPile.getLast());
-                        s.next();
+                        s.nextLine();
                     } else {
                         // skip turn counter;
                         continue;
@@ -113,11 +111,9 @@ public class Uno {
                     }
 
                     System.out.println("You drew a card! Press enter to continue...");
-                    s.next();
-                    System.out.print("\033[H\033[2J");
-                    System.out.flush();
+                    Menus.clearWithWindowsCommand();
                     System.out.println("Press enter whenever you are ready to see your cads (next player turn) Current card on stack: " + discardPile.getLast());
-                    s.next();
+                    s.nextLine();
                     break;
 
                 default:
