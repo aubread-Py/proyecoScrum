@@ -118,4 +118,15 @@ public class Menus {
 		}
 	}
 
+	public static void clearWithWindowsCommand() {
+        try {
+            new ProcessBuilder("cmd", "/c", "cls")
+              .inheritIO()
+              .start()
+              .waitFor();
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
