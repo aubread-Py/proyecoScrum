@@ -1,9 +1,8 @@
 package classes;
 
+import card.Card;
 import java.util.ArrayList;
 import java.util.List;
-
-import card.Card;
 
 public class Player {
 
@@ -38,9 +37,10 @@ public class Player {
 
     public void showHand() {
         System.out.println("Cards of " + name + ":");
-
+        int i = 0;
         for (Card card : hand) {
-            System.out.println(card);
+            System.out.println("[" + i + "] " + card);
+            i++;
         }
     }
 }
