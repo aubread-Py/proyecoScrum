@@ -1,10 +1,15 @@
 package uno;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 import classes.Player;
+import record.Record;
 
 public class Menus {
 
@@ -89,6 +94,28 @@ public class Menus {
 		} while (!options.contains(input));
 
 		return input;
+	}
+
+	public static void showHistory(Scanner s) {
+
+		try {
+
+			for (Path history : Record.getRecords()) {
+				
+				BufferedReader reader = new BufferedReader(new FileReader(history.toFile()));
+
+				System.out.println();
+				String line;
+				while ((line = reader.readLine()) != null) {
+					System.out.println(line);
+				}
+
+				reader.close();
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

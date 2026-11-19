@@ -1,5 +1,6 @@
 package uno;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -8,6 +9,7 @@ import actions.Actions;
 import card.Card;
 import classes.Player;
 import classes.UnoDeck;
+import record.Record;
 
 public class Uno {
 
@@ -33,6 +35,8 @@ public class Uno {
     }
 
     private void startGame() {
+
+        Record record = new Record();
 
         Player winner = null;
         int turnNumber = 0;
@@ -63,6 +67,16 @@ public class Uno {
                     if (successPlay) {
                         actByValue(discardPile.getLast().getValue(), currentPlayer);
                         System.out.println("Played a card!");
+
+                        try {
+                            record.write("PLAYS",
+                                    currentPlayer.getName(),
+                                    discardPile.getLast(),
+                                    turnNumber);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
                     } else {
                         // skip turn counter;
                         continue;
@@ -74,6 +88,16 @@ public class Uno {
 
                     Card drawn = Actions.drawCard((ArrayList<Card>) deck.getCards(), discardPile);
                     currentPlayer.addCard(drawn);
+
+                    try {
+                        record.write("DRAWS",
+                                currentPlayer.getName(),
+                                drawn,
+                                turnNumber);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
                     break;
 
                 default:
@@ -83,13 +107,29 @@ public class Uno {
             // check if the player has won
             if (currentPlayer.getHand().size() == 1) {
                 winner = currentPlayer;
+
+                    try {
+                        record.write("WINS",
+                                currentPlayer.getName(),
+                                null,
+                                turnNumber);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
             }
 
             turnNumber++;
         }
-    
+
         // print winner
         System.out.println("The winner is " + winner.getName());
+        
+        try {
+            record.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     // capped at 3 players, just swap the other 2
@@ -144,7 +184,7 @@ public class Uno {
             default:
                 break;
         }
-    
+
     }
 
 }
