@@ -1,10 +1,9 @@
 package classes;
 
+import card.Card;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import card.Card;
 
 public class UnoDeck {
 
@@ -19,7 +18,7 @@ public class UnoDeck {
     private void createDeck() {
 
         String[] colors = {
-            "RED", "BLUE", "GREEN", "YELLOW"
+            "\033[31mRED", "\033[34mBLUE", "\033[32mGREEN", "\033[33mYELLOW"
         };
 
         for (String color : colors) {

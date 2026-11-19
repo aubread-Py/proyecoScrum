@@ -1,13 +1,12 @@
 package uno;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
-
 import actions.Actions;
 import card.Card;
 import classes.Player;
 import classes.UnoDeck;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
 
 public class Uno {
 
@@ -27,7 +26,11 @@ public class Uno {
         deck.dealCards(players, NUMBER_OF_CARDS);
 
         discardPile = new ArrayList<>();
-        discardPile.add(deck.drawCard());
+        Card firstCard = deck.drawCard();
+        while (firstCard.getColor().equals("WILD") || firstCard.getColor().equals("WILD_DRAW_FOUR")) {
+            firstCard = deck.drawCard();
+        }
+        discardPile.add(firstCard);
 
         startGame();
     }
@@ -41,7 +44,6 @@ public class Uno {
 
             // get player by turn
             Player currentPlayer = players.get(turnNumber % players.size());
-
             System.out.println("\n" + currentPlayer.getName() + "'s turn");
             currentPlayer.showHand();
 
@@ -52,8 +54,13 @@ public class Uno {
                 case "play":
 
                     System.out.print("You play (index): ");
-                    Integer cardIndex = Integer.parseInt(s.nextLine());
-
+                    Integer cardIndex = null;
+                    try {
+                        cardIndex = Integer.parseInt(s.nextLine());
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid input. Please enter a valid card index.");
+                        continue;
+                    }
                     boolean successPlay = Actions.playCard(
                             (ArrayList<Card>) currentPlayer.getHand(),
                             discardPile,
@@ -62,7 +69,12 @@ public class Uno {
 
                     if (successPlay) {
                         actByValue(discardPile.getLast().getValue(), currentPlayer);
-                        System.out.println("Played a card!");
+                        System.out.println("Played a card! Press enter to continue...");
+                        s.next();
+                        System.out.print("\033[H\033[2J");
+                        System.out.flush();
+                        System.out.println("Press enter whenever you are ready to see your cads (next player turn) Current card on stack: " + discardPile.getLast());
+                        s.next();
                     } else {
                         // skip turn counter;
                         continue;
@@ -74,6 +86,12 @@ public class Uno {
 
                     Card drawn = Actions.drawCard((ArrayList<Card>) deck.getCards(), discardPile);
                     currentPlayer.addCard(drawn);
+                    System.out.println("You drew a card! Press enter to continue...");
+                    s.next();
+                    System.out.print("\033[H\033[2J");
+                    System.out.flush();
+                    System.out.println("Press enter whenever you are ready to see your cads (next player turn) Current card on stack: " + discardPile.getLast());
+                    s.next();
                     break;
 
                 default:
