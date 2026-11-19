@@ -1,0 +1,20 @@
+/* 2026-11-19 */
+
+# === CHANGES === #
+# ............... #
+
+Added Record.java
+Modified Main.java and Uno.java
+/res/record added
+
+# === DOCUMENTATION === #
+# ..................... #
+
+Record.java its responsable of writing the history files in the new record folder.
+Have the BufferedWriter and ID attributes.
+ID takes track of the file that is currently writing on.
+
+1) Changes in Uno
+Now every time an action takes place, the Record instance writes it down.
+The Actions that trigger write() are PLAYS, DRAWS and WINS, including the turn number
+the game is currently on.

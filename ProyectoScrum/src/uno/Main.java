@@ -10,27 +10,34 @@ public class Main {
 	public static void main(String[] args) {
 
 		try (Scanner s = new Scanner(System.in)) {
-			
-			String option = Menus.principal(s);
 
-			switch (option) {
-			
-			case "play": 
-				Integer playerNumber = Menus.getPlayerCount(s);
-				ArrayList<Player> players = Menus.createPlayers(playerNumber, s);
-				new Uno(players, s);
-				break;
-			
-			case "history":
-				break;
+			String option;
 
-			case "exit":
-				System.out.println("quiting...");
-				break;
+			do {
 
-			default:
-				throw new IllegalArgumentException("Unexpected value: " + option);
-			}
+				option = Menus.principal(s);
+
+				switch (option) {
+
+					case "play":
+						Integer playerNumber = Menus.getPlayerCount(s);
+						ArrayList<Player> players = Menus.createPlayers(playerNumber, s);
+						new Uno(players, s);
+						break;
+
+					case "history":
+						Menus.showHistory(s);
+						break;
+
+					case "exit":
+						System.out.println("quiting...");
+						break;
+
+					default:
+						throw new IllegalArgumentException("Unexpected value: " + option);
+				}
+				
+			} while (!option.equals("exit"));
 		}
 	}
 }
