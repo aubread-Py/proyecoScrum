@@ -10,9 +10,6 @@ import card.Card;
 import classes.Player;
 import classes.UnoDeck;
 import record.Record;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
 
 public class Uno {
 

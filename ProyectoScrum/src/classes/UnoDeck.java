@@ -18,7 +18,7 @@ public class UnoDeck {
     private void createDeck() {
 
         String[] colors = {
-            "\033[31mRED", "\033[34mBLUE", "\033[32mGREEN", "\033[33mYELLOW"
+            "RED", "BLUE", "GREEN", "YELLOW"
         };
 
         for (String color : colors) {

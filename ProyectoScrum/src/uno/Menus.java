@@ -80,7 +80,7 @@ public class Menus {
 		options.add("GREEN");
 		options.add("YELLOW");
 
-		return handleMenu(options, s);
+		return handleMenu(options, s).toUpperCase();
 	}
 
 	// print a menu from a list and get a valid input
