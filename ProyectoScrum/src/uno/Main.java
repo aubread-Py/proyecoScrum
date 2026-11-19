@@ -1,6 +1,9 @@
 package uno;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import classes.Player;
 
 public class Main {
 
@@ -8,13 +11,23 @@ public class Main {
 
 		try (Scanner s = new Scanner(System.in)) {
 			
-			String option = Menu.principal(s);
+			String option = Menus.principal(s);
 
 			switch (option) {
+			
 			case "play": 
-				Integer playerNumber = Menu.getPlayerCount(s);
+				Integer playerNumber = Menus.getPlayerCount(s);
+				ArrayList<Player> players = Menus.createPlayers(playerNumber, s);
+				new Uno(players, s);
 				break;
-				
+			
+			case "history":
+				break;
+
+			case "exit":
+				System.out.println("quiting...");
+				break;
+
 			default:
 				throw new IllegalArgumentException("Unexpected value: " + option);
 			}

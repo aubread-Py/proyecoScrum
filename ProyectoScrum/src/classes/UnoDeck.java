@@ -1,6 +1,10 @@
+package classes;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import card.Card;
 
 public class UnoDeck {
 
@@ -61,7 +65,14 @@ public class UnoDeck {
             return null;
         }
 
-        return cards.remove(0);
+        // the card color changes during the game
+        // this resets the color when is drawn
+        Card drawn = cards.remove(0);
+        if (drawn.getValue().equals("WILD") || drawn.getValue().equals("WILD_DRAW_FOUR")) {
+            drawn.setColor("WILD");
+        }
+
+        return drawn;
     }
 
     // Repart cards between players

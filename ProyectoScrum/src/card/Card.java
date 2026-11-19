@@ -3,19 +3,23 @@ package card;
 public class Card {
 	
 	private String color;
-	private Value value;
+	private String value;
 
-	public Card(String color, Value value) {
+	public Card(String color, String value) {
 		this.color = color;
 		this.value = value;
 	}
 	
-	public Object getColor() {
+	public String getColor() {
 		return color;
 	}
 
+	public void setColor(String color) {
+		this.color = color;
+	}
+
 	public String getValue() {
-		return value.name();
+		return value;
 	}
 
     @Override
