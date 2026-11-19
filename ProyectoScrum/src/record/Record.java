@@ -39,7 +39,7 @@ public class Record {
                 break;
 
             case "DRAWS":
-                writer.write(playerName + " draws " + card);
+                writer.write(playerName + " draws " + card + " ");
 
             case "WINS":
                 writer.write(playerName + " wins!");
