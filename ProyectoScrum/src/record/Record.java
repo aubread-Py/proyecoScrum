@@ -19,7 +19,7 @@ public class Record {
 
         try {
             id = getRecordCount() + 1; // avoid 0
-            Path path = Path.of("proyectoScrum", "res", "record", id + "-record");
+            Path path = Path.of("res", "record", id + "-record");
             writer = new BufferedWriter(new FileWriter(path.toFile()));
         } catch (IOException e) {
             e.printStackTrace();
@@ -58,7 +58,7 @@ public class Record {
     }
 
     private static Stream<Path> getRecordsFiles() throws IOException {
-        return Files.list(Path.of("proyectoScrum", "res", "record"));
+        return Files.list(Path.of("res", "record"));
     }
 
     public static List<Path> getRecords() throws IOException {
