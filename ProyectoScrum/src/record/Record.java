@@ -15,17 +15,37 @@ public class Record {
     private static int id;
     BufferedWriter writer;
 
-    public Record() {
+    // public Record() {
 
-        try {
-            id = getRecordCount() + 1; // avoid 0
-            Path path = Path.of("res", "record", id + "-record");
-            writer = new BufferedWriter(new FileWriter(path.toFile()));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    //     try {
+    //         id = getRecordCount() + 1; // avoid 0
+    //         Path path = Path.of("res", "record", id + "-record");
+    //         writer = new BufferedWriter(new FileWriter(path.toFile()));
+    //     } catch (IOException e) {
+    //         e.printStackTrace();
+    //     }
 
+    // }
+public Record() {
+    try {
+        Path directory = Path.of("res", "record");
+
+        // Crea la carpeta si no existe
+        Files.createDirectories(directory);
+
+        id = getRecordCount() + 1;
+
+        Path path = directory.resolve(id + "-record");
+
+        writer = Files.newBufferedWriter(path);
+
+    } catch (IOException e) {
+        throw new IllegalStateException(
+            "No se ha podido inicializar el historial", e
+        );
     }
+}
+
 
     public void write(String action, String playerName, Card card, int turnNumber) throws IOException {
 
